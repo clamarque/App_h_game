@@ -67,7 +67,7 @@ function startGame(event) {
     canvas.css('display', 'block'); // on affiche le canvas à la place
     canvas.click(canvas_clickHandler); // on écoute le click sur le canvas
     setInterval(createMonster, MONSTER_DELAY); // lancement du processus de création de monstres à intervalles régulier
-    createPicture(); // 
+    createPicture(); // lancement de la création de la photo
     requestAnimationFrame(render); // on lance le processus de rendu du canvas
 
 }
@@ -88,7 +88,7 @@ function createMonster() {
         monsters.push(monster);
     }
 }
-//Fonction création de l'objet de l'image
+//Fonction création de l'image
 function createPicture() {
     TakePicture = new Picture();
 }
