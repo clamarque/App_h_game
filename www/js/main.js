@@ -68,10 +68,8 @@ function startGame(event) {
     requestAnimationFrame(render); // on lance le processus de rendu du canvas
 
 }
-/**
- * Fonction appelée par le setInterval (cf. ligne 40) toutes les 500ms (MONSTER_DELAY)
- * Crée un nouveau monstre à une position aléatoire.
- */
+
+//Fonction création de monstre à une position aléatoire appelée par le setInterval toutes les 500ms (MONSTER_DELAY)
 function createMonster()
 {
 	// si l'on a 50 monstres déjà à l'écran, on n'en crée pas de nouveau
