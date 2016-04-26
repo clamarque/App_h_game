@@ -11,6 +11,7 @@ window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequest
 
 
 function init() {
+
     $('#game__btn').click(LaunchCamera);
     Monster.initialize(); // initialisaion classe Monster pour lancer le téléchargement de l'image à afficher dans le canvas
     canvas = $('canvas');
@@ -20,6 +21,7 @@ function init() {
 
 //Fonction d'appel du plugin CAMERA
 function LaunchCamera(event) {
+
     function onSuccess(imageData) {
         Picture.initialize("data:image/jpeg;base64," + imageData)
         startGame();
@@ -60,6 +62,7 @@ function LaunchAccelerometre() {
 //Fonction d'appel du lancement du jeu -> affiche le canvas et démarre le jeu
 //@param  {Event} event événement click lancé par le bouton startGame
 function startGame(event) {
+
     $('.game').hide(); // cache la partie menue du jeu
     canvas.css('display', 'block'); // on affiche le canvas à la place
     canvas.click(canvas_clickHandler); // on écoute le click sur le canvas
@@ -70,22 +73,20 @@ function startGame(event) {
 }
 
 //Fonction création de monstre à une position aléatoire appelée par le setInterval toutes les 500ms (MONSTER_DELAY)
-function createMonster()
-{
-	// si l'on a 50 monstres déjà à l'écran, on n'en crée pas de nouveau
-	if (monsters.length < 50 )
-	{
-		// on crée un nouveau monstre
-		var monster = new Monster();
-		// position x et y aléatoire, en fonction des dimensions du canvas
-		monster.y = Math.random()*$('canvas').height();
-		monster.x = Math.random()*$('canvas').width();
-		// taille du nouveau monstre aléatoire également
-		monster.size = monster.size * ( 0.5 + 0.5*Math.random() )
-		// on enregistre le monstre dans notre tableau de monstres
-		// pour un affichage ultérieur dans le canvas
-		monsters.push( monster );
-	}
+function createMonster() {
+    // si l'on a 50 monstres déjà à l'écran, on n'en crée pas de nouveau
+    if (monsters.length < 50) {
+        // on crée un nouveau monstre
+        var monster = new Monster();
+        // position x et y aléatoire, en fonction des dimensions du canvas
+        monster.y = Math.random() * $('canvas').height();
+        monster.x = Math.random() * $('canvas').width();
+        // taille du nouveau monstre aléatoire également
+        monster.size = monster.size * (0.5 + 0.5 * Math.random())
+            // on enregistre le monstre dans notre tableau de monstres
+            // pour un affichage ultérieur dans le canvas
+        monsters.push(monster);
+    }
 }
 //Fonction création de l'objet de l'image
 function createPicture() {
@@ -115,27 +116,20 @@ function canvas_clickHandler(event) {
     }
 }
 
-/**
- * Méthode appelée via la méthode requestAnimationFrame
- * Affiche les monstres sur le canvas
- */
-function render() {
-    // on calcule les dimensions du canvas
-    var bounds = canvas[0].getBoundingClientRect();
 
-    // on efface complètement le canvas
-    context.clearRect(0, 0, canvas.width(), canvas.height());
-    //On affiche l'image dans le canvas
-    TakePicture.move(bounds);
-    TakePicture.renderTo(context);
+//Fonction qui affiche les monstres dans le canvas
+function render() {
+
+    var bounds = canvas[0].getBoundingClientRect(); // calcul des dimensions du canvas
+    context.clearRect(0, 0, canvas.width(), canvas.height()); // effacement du canvas
+    TakePicture.move(bounds); // on déplace la photo
+    TakePicture.renderTo(context); // Affiche la photo dans le canvas
     // on affiche un à un les monstres dans le canvas
     for (var i = 0, monstersLength = monsters.length; i < monstersLength; i++) {
         var monster = monsters[i];
-        // on déplace le monstre
-        monster.move(bounds);
-        // on l'affiche dans le canvas
-        monster.renderTo(context);
+        monster.move(bounds); // déplace le monstre
+        monster.renderTo(context); // affiche dans le canvas
     }
-    // on redemande un nouveau render à la frame suivante
-    requestAnimationFrame(render);
+    requestAnimationFrame(render); // on redemande un nouveau render à la frame suivante
+
 }
