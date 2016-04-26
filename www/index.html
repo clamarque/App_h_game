@@ -31,6 +31,7 @@
 </body>
 
 <script>
+    //méthode qui calcule automatiquement la hauteur du viewport (y compris lors d'un redimensionnement) 
     $("#canvas").outerHeight($(window).height() - $("#canvas").offset().top - Math.abs($("#canvas").outerHeight(true) - $("#canvas").outerHeight()));
     $(window).on("resize", function () {
         $("#canvas").outerHeight($(window).height() - $("#canvas").offset().top - Math.abs($("#canvas").outerHeight(true) - $("#canvas").outerHeight()));
