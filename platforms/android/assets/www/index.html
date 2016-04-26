@@ -17,7 +17,7 @@
     </section>
     <section id="gameContainer">
 
-        <canvas id="canvas" height="564px">
+        <canvas id="canvas">
             Votre navigateur n'est pas assez récent. Veuillez le mettre à jour.
         </canvas>
     </section>
@@ -29,6 +29,7 @@
 
 
 </body>
+
 <script>
     $("#canvas").outerHeight($(window).height() - $("#canvas").offset().top - Math.abs($("#canvas").outerHeight(true) - $("#canvas").outerHeight()));
     $(window).on("resize", function () {

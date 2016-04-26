@@ -12,13 +12,12 @@
         <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
     </feature>
     <allow-intent href="market:*" />
-    <name>HelloCordova</name>
+    <name>Shoot</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
-    </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+       A game shoot    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">clamarque
     </author>
+    <icon density="mdpi" height="57" platform="android" src="www/img/logo.png" width="57" />
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
